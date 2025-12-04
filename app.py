@@ -76,16 +76,16 @@ st.markdown("""
 <p style='text-align:center;'>Welcome! I'm here to help prevent, reduce, and resolve workplace grievances within the UNHCR community.</p>
 """, unsafe_allow_html=True)
 
-st.markdown(
-    """
-    <iframe width="100%" height="315"
-    src="https://www.youtube.com/embed/n0jQjX3WMNA"
-    frameborder="0"
-    allowfullscreen></iframe>
-    """,
-    unsafe_allow_html=True,
-)
-
+# st.markdown(
+#     """
+#     <iframe width="100%" height="315"
+#     src="https://www.youtube.com/embed/n0jQjX3WMNA"
+#     frameborder="0"
+#     allowfullscreen></iframe>
+#     """,
+#     unsafe_allow_html=True,
+# )
+st.video("https://youtu.be/n0jQjX3WMNA")
 
 # ----------------------------
 # Initialize Chat History
