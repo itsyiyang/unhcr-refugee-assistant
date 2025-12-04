@@ -1,0 +1,13 @@
+# Environment files (DO NOT TRACK)
+.env
+.env.txt
+*.env
+*.key
+*.secret
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Streamlit secrets file (never upload)
+.streamlit/secrets.toml
