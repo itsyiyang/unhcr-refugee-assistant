@@ -37,8 +37,9 @@ language_options = {
     "Arabic": "ar",
     "French": "fr",
     "Spanish": "es",
-    "Chinese": "zh",
-    "Ukrainian": "uk"
+    "Ukrainian": "uk",
+    "Pashto": "ps",
+    "Dari": "fa",
 }
 
 selected_language = st.selectbox("Select your preferred language:", list(language_options.keys()))
@@ -50,22 +51,10 @@ target_lang = language_options[selected_language]
 st.sidebar.image(UNHCR_LOGO, use_container_width=True)
 st.sidebar.markdown("""
 ### 🌍 Ombudsman and Mediator
-
-Your neutral guide for:  
+Your neutral guide for:
 - Conflict resolution ⚖️  
 - Workplace fairness 🏢  
 - Support and guidance 💬  
-
-[Visit UNHCR Website →](https://www.unhcr.org/)  
-[Contact Office of Ombudsman and Mediator →](https://intranet.unhcr.org/en/about/office-of-the-ombudsman.html)
-
----
-
-### 📑 Annual Reports and Publications
-Download the latest reports to learn more about our work:
-- [Year in Review 2024](https://intranet.unhcr.org/content/dam/unhcr/intranet/organization-leadership/ombudsman/documents/english/annual-reports/Year%20In%20Review_2024_EN.pdf)
-- [Year in Review 2023](https://intranet.unhcr.org/content/dam/unhcr/intranet/organization-leadership/ombudsman/documents/english/annual-reports/Ombudsman%20Year%20in%20Review%202023%20EN.pdf)
-- [Year in Review 2022](https://intranet.unhcr.org/content/dam/unhcr/intranet/organization-leadership/ombudsman/documents/english/annual-reports/Ombudsman%20Year%20in%20Review%202022%20EN.pdf)
 """)
 
 # ----------------------------
@@ -76,16 +65,7 @@ st.markdown("""
 <p style='text-align:center;'>Welcome! I'm here to help prevent, reduce, and resolve workplace grievances within the UNHCR community.</p>
 """, unsafe_allow_html=True)
 
-st.markdown(
-    """
-    <iframe width="100%" height="315"
-    src="https://www.youtube.com/embed/n0jQjX3WMNA"
-    frameborder="0"
-    allowfullscreen></iframe>
-    """,
-    unsafe_allow_html=True,
-)
-
+st.video("https://youtu.be/n0jQjX3WMNA")
 
 # ----------------------------
 # Initialize Chat History

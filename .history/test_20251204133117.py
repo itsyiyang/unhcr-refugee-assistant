@@ -62,7 +62,6 @@ Your neutral guide for:
 ---
 
 ### 📑 Annual Reports and Publications
-Download the latest reports to learn more about our work:
 - [Year in Review 2024](https://intranet.unhcr.org/content/dam/unhcr/intranet/organization-leadership/ombudsman/documents/english/annual-reports/Year%20In%20Review_2024_EN.pdf)
 - [Year in Review 2023](https://intranet.unhcr.org/content/dam/unhcr/intranet/organization-leadership/ombudsman/documents/english/annual-reports/Ombudsman%20Year%20in%20Review%202023%20EN.pdf)
 - [Year in Review 2022](https://intranet.unhcr.org/content/dam/unhcr/intranet/organization-leadership/ombudsman/documents/english/annual-reports/Ombudsman%20Year%20in%20Review%202022%20EN.pdf)

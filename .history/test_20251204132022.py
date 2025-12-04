@@ -37,8 +37,9 @@ language_options = {
     "Arabic": "ar",
     "French": "fr",
     "Spanish": "es",
-    "Chinese": "zh",
-    "Ukrainian": "uk"
+    "Ukrainian": "uk",
+    "Pashto": "ps",
+    "Dari": "fa",
 }
 
 selected_language = st.selectbox("Select your preferred language:", list(language_options.keys()))
@@ -50,22 +51,10 @@ target_lang = language_options[selected_language]
 st.sidebar.image(UNHCR_LOGO, use_container_width=True)
 st.sidebar.markdown("""
 ### 🌍 Ombudsman and Mediator
-
-Your neutral guide for:  
+Your neutral guide for:
 - Conflict resolution ⚖️  
 - Workplace fairness 🏢  
 - Support and guidance 💬  
-
-[Visit UNHCR Website →](https://www.unhcr.org/)  
-[Contact Office of Ombudsman and Mediator →](https://intranet.unhcr.org/en/about/office-of-the-ombudsman.html)
-
----
-
-### 📑 Annual Reports and Publications
-Download the latest reports to learn more about our work:
-- [Year in Review 2024](https://intranet.unhcr.org/content/dam/unhcr/intranet/organization-leadership/ombudsman/documents/english/annual-reports/Year%20In%20Review_2024_EN.pdf)
-- [Year in Review 2023](https://intranet.unhcr.org/content/dam/unhcr/intranet/organization-leadership/ombudsman/documents/english/annual-reports/Ombudsman%20Year%20in%20Review%202023%20EN.pdf)
-- [Year in Review 2022](https://intranet.unhcr.org/content/dam/unhcr/intranet/organization-leadership/ombudsman/documents/english/annual-reports/Ombudsman%20Year%20in%20Review%202022%20EN.pdf)
 """)
 
 # ----------------------------
@@ -76,16 +65,7 @@ st.markdown("""
 <p style='text-align:center;'>Welcome! I'm here to help prevent, reduce, and resolve workplace grievances within the UNHCR community.</p>
 """, unsafe_allow_html=True)
 
-st.markdown(
-    """
-    <iframe width="100%" height="315"
-    src="https://www.youtube.com/embed/n0jQjX3WMNA"
-    frameborder="0"
-    allowfullscreen></iframe>
-    """,
-    unsafe_allow_html=True,
-)
-
+st.video("https://youtu.be/n0jQjX3WMNA")
 
 # ----------------------------
 # Initialize Chat History
@@ -136,59 +116,4 @@ if "prompt" in st.session_state:
     prompt = st.session_state.prompt
     del st.session_state["prompt"]
 elif user_input:
-    prompt = user_input
-else:
-    prompt = None
-
-# ----------------------------
-# Convert Chat History → Prompt
-# ----------------------------
-def convert_history_to_prompt(messages):
-    system_instruction = None
-    dialogue = ""
-
-    for msg in messages:
-        if msg["role"] == "system":
-            system_instruction = msg["content"]
-        elif msg["role"] == "user":
-            dialogue += f"User: {msg['content']}\n"
-        elif msg["role"] == "assistant":
-            dialogue += f"Assistant: {msg['content']}\n"
-
-    return system_instruction, dialogue
-
-# ----------------------------
-# Chat Generation with Gemini
-# ----------------------------
-if prompt:
-    translated_input = translate(prompt, "en")
-
-    st.session_state.messages.append({"role": "user", "content": prompt})
-    st.chat_message("user").markdown(prompt)
-
-    with st.chat_message("assistant"):
-        msg_placeholder = st.empty()
-        full_reply = ""
-
-        try:
-            system_instruction, history_prompt = convert_history_to_prompt(st.session_state.messages)
-
-            # Gemini request
-            response_stream = client.models.generate_content_stream(
-                model="gemini-2.5-flash",
-                config=types.GenerateContentConfig(system_instruction=system_instruction),
-                contents=[history_prompt]  # MUST be a string, not dict/list
-            )
-
-            for chunk in response_stream:
-                if chunk.text:
-                    full_reply += chunk.text
-                    msg_placeholder.markdown(full_reply)
-
-            translated_reply = translate(full_reply, target_lang)
-
-            st.session_state.messages.append({"role": "assistant", "content": translated_reply})
-            msg_placeholder.markdown(translated_reply)
-
-        except Exception as e:
-            st.error(f"⚠️ An error occurred: {e}")
+    prompt = use
